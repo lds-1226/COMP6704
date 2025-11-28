@@ -21,6 +21,3 @@ The method successfully solves to **proven global optimality** instances with up
 - Full convergence plots and result tables automatically generated  
 - Real airport topology and realistic flight schedules
 
----
-
-## File Structure
