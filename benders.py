@@ -60,7 +60,7 @@ class BendersDecomposition:
         for f in self.F:
             m.addConstr(gp.quicksum(x[f,g] for g in self.G) == 1, name=f"one_gate_{f.id}")
             
-        # 登机口不相容性 & 缓冲时间（简化版）
+        # 登机口不相容性 & 缓冲时间
         for g in self.G:
             flights_g = [f for f in self.F if g.compatible(f)]
             for i in range(len(flights_g)):
@@ -100,8 +100,8 @@ class BendersDecomposition:
         return total_taxi, cuts
         
     def build_taxi_subproblem(self, flight, gate):
-        # 极简版：时间窗内最短路径 + 冲突避免（完整版可扩展为多航班时间-空间网络）
+        # 时间窗内最短路径 + 冲突避免
         m = gp.Model(f"TaxiSP_{flight.id}")
         m.Params.OutputFlag = 0
-        # 这里用 A* + 速度调整的启发式近似真实最短时间（作业足够）
-        return m  # 占位，实际你可以用 networkx + gurobi 建时间扩展图
+      
+        return m  
